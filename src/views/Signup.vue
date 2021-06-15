@@ -1,31 +1,27 @@
 <template>
-  <div class="create-movie">
+  <div class="signup">
     <form v-on:submit.prevent="submit()">
-      <h1>Create Post</h1>
+      <h1>Signup</h1>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
         </li>
       </ul>
       <div class="form-group">
-        <label>Title:</label>
-        <input type="text" class="form-control" v-model="newMovieParams.title" />
+        <label>Name:</label>
+        <input type="text" class="form-control" v-model="newUserParams.name" />
       </div>
       <div class="form-group">
-        <label>Plot:</label>
-        <input type="text" class="form-control" v-model="newMovieParams.plot" />
-        <small v-if="newMovieParams.plot.length <= 300">{{ 300 - newMovieParams.plot.length }} characters left</small>
-        <small v-else-if="newMovieParams.plot.lemgth > 300">
-          Too many characters entered! Plot cannot be more than 300 characters
-        </small>
+        <label>Email:</label>
+        <input type="email" class="form-control" v-model="newUserParams.email" />
       </div>
       <div class="form-group">
-        <label>year:</label>
-        <input type="text" class="form-control" v-model="newMovieParams.year" />
+        <label>Password:</label>
+        <input type="password" class="form-control" v-model="newUserParams.password" />
       </div>
       <div class="form-group">
-        <label>director:</label>
-        <input type="text" class="form-control" v-model="newMovieParams.director" />
+        <label>Password confirmation:</label>
+        <input type="password" class="form-control" v-model="newUserParams.password_confirmation" />
       </div>
       <input type="submit" class="btn btn-primary" value="Submit" />
     </form>
@@ -38,14 +34,14 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newMovieParams: {},
+      newUserParams: {},
       errors: [],
     };
   },
   methods: {
     submit: function () {
       axios
-        .movie("/movies", this.newMovieParams)
+        .post("/users", this.newUserParams)
         .then((response) => {
           console.log(response.data);
           this.$router.push("/login");

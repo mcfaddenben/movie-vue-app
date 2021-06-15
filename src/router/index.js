@@ -5,6 +5,9 @@ import MoviesIndex from "../views/Index.vue";
 import CreateMovie from "../views/Create.vue";
 import ShowMovie from "../views/Show.vue";
 import EditMovie from "../views/Edit.vue";
+import Logout from "../views/Logout.vue";
+import Login from "../views/Login.vue";
+import Signup from "../views/Signup.vue";
 
 Vue.use(VueRouter);
 
@@ -41,6 +44,21 @@ const routes = [
     path: "/Edit",
     name: "edit-movie",
     component: EditMovie,
+  },
+  {
+    path: "/Logout",
+    name: "logout",
+    component: Logout,
+  },
+  {
+    path: "/Login",
+    name: "login",
+    component: Login,
+  },
+  {
+    path: "/Signup",
+    name: "signup",
+    component: Signup,
   },
 ];
 

@@ -43,31 +43,6 @@ export default {
         console.log(response.data);
       });
     },
-    addMovie: function () {
-      var params = {
-        title: this.newTitle,
-        plot: this.newPlot,
-        year: this.newYear,
-        director: this.newDirector,
-      };
-      axios
-        .post("http://localhost:3000/movies", params)
-        .then((response) => {
-          this.movies.push(response.data);
-          this.newTitle = "";
-          this.newPlot = "";
-          this.newYear = "";
-          this.newDirector = "";
-        })
-        .catch((error) => {
-          console.log(error.response.data.errors);
-        });
-    },
-    showInfo: function (movie) {
-      this.currentMovie = movie;
-      console.log(movie);
-      document.querySelector("#movie-detils").showModal();
-    },
   },
 };
 </script>
